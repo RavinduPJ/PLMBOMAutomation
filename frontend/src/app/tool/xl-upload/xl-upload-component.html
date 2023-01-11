@@ -1,0 +1,420 @@
+<div class="content-base">
+  <loader *ngIf="loader"></loader>
+  <loader *ngIf="loading"></loader>
+  <!-- <div class="spinner-border" role="status" *ngIf="loading">
+    <span class="sr-only">Loading...</span>
+  </div> -->
+  <div *ngIf="page==1">
+    <div class="card">
+      <div class="card-body">
+        <div class="row mb-2">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <strong>Upload</strong>
+              </div>
+              <div class="card-body">
+                <form>
+                  <!-- <div class="container mt-3"> box -->
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="row mt-3">
+                        <div class="col-md-6 col-lg-6">
+                          <div class="form-group">
+                            <!-- <span class="text">Customer</span>
+                            <label class="control-label">Customer</label>
+                            <select class="form-control" name="customer" id="customer" #customer
+                              (change)="customerSelected(customer.value)">
+                              <option *ngFor="let c of customers" value="{{c.id}}">
+                                {{c.name}}
+                              </option>
+                            </select> -->
+                            <mat-form-field appearance="fill" style="width: 100%;">
+                              <mat-label>Customer</mat-label>
+                              <input type="text" placeholder="Pick a Customer!" aria-label="Customer" matInput
+                                [formControl]="customerControl" [matAutocomplete]="auto_customer" #customer>
+                              <mat-autocomplete #auto_customer="matAutocomplete">
+                                <mat-option *ngFor="let c of filteredCustomers | async" [value]="c">
+                                  {{c}}
+                                </mat-option>
+                              </mat-autocomplete>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="col-md-6 col-lg-6">
+                          <div class="form-group">
+                            <mat-form-field appearance="fill" style="width: 100%;">
+                              <mat-label>Season</mat-label>
+
+                              <!-- <select class="form-control" name="season" id="season" #season
+                              (change)="seasonSelected(season.value)">
+                              <option *ngFor="let s of seasons" value="{{s.id}}">
+                                {{s.name}}
+                              </option>
+                            </select> -->
+                              <input type="text" placeholder="Pick a Season!" aria-label="Season" matInput
+                                [formControl]="seasonControl" [matAutocomplete]="auto_season">
+                              <mat-autocomplete #auto_season="matAutocomplete">
+                                <mat-option *ngFor="let s of filteredSeasons | async"  [value]="s" >
+                                  {{s}}
+                                </mat-option>
+                              </mat-autocomplete>
+                            </mat-form-field>
+                          </div>
+
+                        </div>
+                      </div>
+                      <div class="row mt-3">
+                        <div class="col-md-6 col-lg-6">
+                          <div class="form-group">
+                            <!-- <span class="text">Style</span>
+                            <label class="control-label">Style Number</label>
+                            <select class="form-control" name="style" #style (change)="styleSelected(style.value)"
+                              id="style">
+                              <option *ngFor="let s of styles" value="{{s.id}}">
+                                {{s.name}}
+                              </option>
+                            </select> -->
+                            <mat-form-field appearance="fill" style="width: 100%;">
+                              <mat-label>Style Number</mat-label>
+                              <input type="text" placeholder="Pick a Style Number!" aria-label="Style Number" matInput
+                                [formControl]="styleNumberControl" [matAutocomplete]="auto_style">
+                              <mat-autocomplete #auto_style="matAutocomplete">
+                                <mat-option *ngFor="let s of filteredStyles | async" [value]="s">
+                                  {{s}}
+                                </mat-option>
+                              </mat-autocomplete>
+                            </mat-form-field>
+                          </div>
+
+                        </div>
+                        <div class="col-md-6 col-lg-6">
+                          <div class="form-group">
+                            <!-- <span class="text">Version</span>
+                            <label class="control-label">BOM Version</label>
+                            <select class="form-control" name="ver" #bom id="ver" (change)="bomSelected(bom.value)">
+                              <option *ngFor="let v of versions" value="{{v.id}}">
+                                {{v.name}}
+                              </option>
+                            </select> -->
+                            <mat-form-field appearance="fill" style="width: 100%;">
+                              <mat-label>BOM Version</mat-label>
+                              <input type="text" placeholder="Pick a BOM Version!" aria-label="BOM Version" matInput
+                                [formControl]="bomVersionControl" [matAutocomplete]="auto_bom">
+                              <mat-autocomplete #auto_bom="matAutocomplete">
+                                <mat-option *ngFor="let v of filteredVersions | async" [value]="v" >
+                                  {{v}}
+                                </mat-option>
+                              </mat-autocomplete>
+                            </mat-form-field>
+                          </div>
+
+                        </div>
+                      </div>
+                      <div class="row mt-3">
+                        <div class="col-md-6 col-lg-6">
+                          <div class="form-group">
+                            <!-- <span class="text">Style</span>
+                            <label class="control-label">Silhouette</label>
+                            <select class="form-control" name="silhouette" #silhouette id="silhouette"
+                              (change)="silhouetteSelected(silhouette.value)">
+                              <option *ngFor="let s of silhouettes" value="{{s.id}}">
+                                {{s.name}}
+                              </option>
+                            </select> -->
+                            <mat-form-field appearance="fill" style="width: 100%;">
+                              <mat-label>Silhouette</mat-label>
+                              <input type="text" placeholder="Pick a Silhouette!" aria-label="Silhouette" matInput
+                                [formControl]="silhouteControl" [matAutocomplete]="auto_sil">
+                              <mat-autocomplete #auto_sil="matAutocomplete">
+                                <mat-option *ngFor="let s of filteredSilhouettes | async" [value]="s" >
+                                  {{s}}
+                                </mat-option>
+                              </mat-autocomplete>
+                            </mat-form-field>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                    <!-- </div> -->
+
+                    <div class="row mt-5 mb-3">
+                      <div class="col-12 d-flex justify-content-between">
+                        <div>
+                          <input type="file" class="file" id="file" (change)="processExcel($event)" />
+                          <label for="file" class="file-btn"><i class="bi bi-file-earmark-arrow-up-fill"></i> Choose a
+                            file</label>
+                        </div>
+                        <div>
+                          <button class="btn btn-danger" id="process" name="process"
+                            [disabled]="!excelOk || !masterDataOK" (click)="processUpload()">Next</button>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                  <!-- </div> -->
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+  </div>
+  <div *ngIf="page==2">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="col-md-12 col-lg-12 mt-3">
+            <div class="card">
+              <div class="card-header">
+                Upload list
+              </div>
+              <div class="card-body table-responsive text-nowrap">
+                <!-- class="table table-bordered table-striped table-sm table-responsive" -->
+                <table class="table table-striped table-sm">
+                  <thead>
+                    <tr align="center">
+                      <th>Garment Colour</th>
+                      <th>Garment Color Code</th>
+                      <th>RM Color</th>
+                      <th>RM Color Code</th>
+                      <th>Placement Name</th>
+                      <th>Supplier Name</th>
+                      <th>Colour Dying Technique</th>
+                      <th id="edit_col"></th>
+                    </tr>
+                  </thead>
+                  <tbody align="center">
+                    <tr *ngFor="let row of tableData; let indx = index">
+                      <td>{{row.gmt_color}}</td>
+                      <td>{{row.gmt_color_code}}</td>
+                      <td>{{row.rm_color}}</td>
+                      <td>{{row.rm_color_code}}</td>
+                      <td>{{row.rm_color_placement}}</td>
+                      <td>{{row.rm_color_supplier}}</td>
+                      <td>{{row.rm_color_cdt}}</td>
+                      <td id="edit_col"><button type="button" class="btn btn-sm btn-secondary" id="edit"
+                          (click)="editRow(indx)">Edit</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="card-footer">
+                <div class="row">
+                  <div *ngIf="tablePagenation" style="margin-top: 1%;">
+                    <div style="float: left; margin-left: 10%;">
+                      <button type="button" class="btn btn-danger" (click)="tablePageBack()"
+                        [disabled]="backButtonDisabled">Back</button>
+                    </div>
+                    <div style="float: right; margin-right: 10%;">
+                      <button type="button" class="btn btn-danger" (click)="tablePageForward()"
+                        [disabled]="forwardButtonDisabled">Next</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mt-2">
+                  <div class="col-4 offset-4 d-grid">
+                    <button id="p1" name="p1" class="btn btn-secondary" (click)="reset()">Start Over</button>
+                  </div>
+                </div>
+                <div class="row mt-1">
+                  <div class="col-4 offset-4 d-grid mt-2 mb-3">
+                    <button id="nx" name="nx" class="btn btn-danger" (click)="doUploadToLibrary()">Next</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="page==3">
+    <div class="container">
+      <div class="row mt-5">
+        <div class="col-6 offset-3">
+          <div class="alert alert-success fw-bold">
+            <div class="d-flex justify-content-between">
+              <div>
+                <i class="bi bi-check-circle-fill"></i>
+                <span class="q ms-3">Colorways Extracted </span>
+              </div>
+              <div>
+                <span class="a">{{libraryUploadStatus.totalGMTExtracted}}</span>
+              </div>
+            </div>
+            <div class="d-flex justify-content-between mt-3">
+              <div>
+                <i class="bi bi-check-circle-fill"></i>
+                <span class="q ms-3">Raw Material Color Extracted </span>
+              </div>
+              <div>
+                <span class="a">{{libraryUploadStatus.totalRMExtracted}}</span>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+        <button class="btn btn-success" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLib" aria-expanded="false" aria-controls="collapseLib">
+        More Info
+        </button>
+
+        <div style="margin-top: 2%; background-color: gray;" class="alert alert-info collapse" id="collapseLib">
+          <table class="table">
+            <tr *ngFor="let d of libraryUploadStatus.perInfo()">
+              <td>
+                Supplier Name
+              </td>
+              <td>
+                {{d.supplierName}}
+              </td>
+              <td>
+                Raw Color Material
+              </td>
+              <td>
+                {{d.rms}}
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="container" style="height: 50px; text-align: center;">
+      <div class="row">
+        <div class="col-4 offset-8 d-flex justify-content-end" style="margin-top: 10px;">
+          <button id="final" name="final" class="btn btn-danger" [disabled]="libraryUploadStatus.rmInLibrary.length == 0"
+            (click)="doFinalUpload()">Map To PLM</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4 offset-4 d-grid" style="margin-top: 10px;">
+          <button id="rst" name="rst" class="btn btn-secondary" (click)="reset()">Start Over</button>
+        </div>
+        <div class="col-4 offset-4 d-grid" style="margin-top: 10px;">
+          <button id="err" name="err" class="btn btn-danger" (click)="showErrors()"
+            [disabled]="!libraryUploadErrors">View Errors</button>
+        </div>
+      </div>
+    </div>
+    <error-box-lib *ngIf="showLibErrors" [rmce]="libraryUploadStatus.rmErrors" [gmte]="libraryUploadStatus.gmtErrors"
+      (closeEvt)="hideErrors()"></error-box-lib>
+  </div>
+  <div *ngIf="page==4">
+    <div class="container">
+      <div class="row col-md-12 mt-3">
+        <div class="col-6 offset-3">
+          <div class="alert alert-success fw-bold">
+            <div class="d-flex justify-content-between mt-3">
+              <div>
+                <i class="bi bi-check-circle-fill"></i>
+                <span class="q ms-2">Colorways Added to the library </span>
+              </div>
+              <div>
+                <span class="a">{{libraryUploadStatus.gmInLibrary.length}}</span>
+              </div>
+
+            </div>
+            <div class="d-flex justify-content-between mt-3">
+              <div>
+                <i class="bi bi-check-circle-fill"></i>
+                <span class="q ms-2">Raw Material Colors Added to the library </span>
+              </div>
+              <div>
+                <span class="a">{{libraryUploadStatus.rmInLibrary.length}}</span>
+              </div>
+
+            </div>
+            <div class="d-flex justify-content-between mt-3">
+              <div>
+                <i class="bi bi-check-circle-fill"></i>
+                <span class="q ms-2">Colorways added to the PLM BOM</span>
+              </div>
+              <div>
+                <span class="a">{{colorWays.length}}</span>
+              </div>
+
+            </div>
+            <div class="d-flex justify-content-between mt-3">
+              <div>
+                <i class="bi bi-check-circle-fill"></i>
+                <span class="q ms-2">Raw Material Colors Added to the PLM BOM </span>
+              </div>
+              <div>
+                <span class="a">{{rmMaterials.length}}</span>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+        <!-- <div class="col-12 d-flex justify-content-center"> width: 25%; -->
+          <button class="btn btn-success" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBOM" aria-expanded="false" aria-controls="collapseBOM">
+            More Info
+            </button>
+        <div style="margin-top: 2%; background-color: gray;" class="alert alert-info collapse" id="collapseBOM">
+          <table class="table">
+            <tr *ngFor="let f of colorWays">
+              <td>
+                Colorway Name
+              </td>
+              <td>
+                {{f.name}}
+              </td>
+
+            </tr>
+          </table>
+        </div>
+        <!-- </div> -->
+
+
+      </div>
+
+      <!-- <div class="row">
+              <div class="col-12 d-flex justify-content-center">
+                <div style="margin-top: 2%; width: 25%;" class="alert alert-info">
+                  <table class="table">
+                    <tr *ngFor="let f of colorWays">
+                      <td>
+                        Colorway Name
+                      </td>
+                      <td>
+                        {{f.name}}
+                      </td>
+
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div> -->
+    </div>
+    <div class="container" style="height: 50px; text-align: center;">
+
+      <div class="row">
+        <div class="col-4 offset-4 d-grid mt-3">
+          <button id="ack" name="ack" class="btn btn-secondary" (click)="reset()">Acknowledge</button>
+        </div>
+        <div class="col-4 offset-4 d-grid mt-3">
+          <button id="err" name="err" class="btn btn-danger" (click)="showErrorsOnFinal()"
+            [disabled]="finalRMErrors.length == 0">View
+            Errors</button>
+        </div>
+      </div>
+
+      <error-box-lib *ngIf="dispFinalErrors" [genericErrors]="finalRMErrors" (closeEvt)="hideErrorsOnFinal()">
+      </error-box-lib>
+    </div>
+  </div>
+</div>
+<div *ngIf="editMode" style="margin-top: 10%;">
+  <edit-box [editRow]="editingRow" (buttonFire)="editCallback($event)"></edit-box>
+</div>

@@ -1,0 +1,48 @@
+<div class="modal">
+    <div class="modal-content">
+        <div *ngIf="gmte">
+            <div class="heading">
+                <button class="btn btn-danger" (click)="showGMT()">Show GMT Errors</button>
+            </div>
+            <div class="scroll_table" *ngIf="sgmt">
+                <table>
+                    <tr *ngFor="let gmt of gmte">
+                        <td>
+                            <div class="alert alert-danger" role="alert">
+                                {{gmt}}
+                            </div>
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+        <div *ngIf="rmce">
+            <div class="heading">
+                <button class="btn btn-danger" (click)="showRM()">Show RM Errors</button>
+            </div>
+            <div class="scroll_table" *ngIf="srm">
+                <table>
+                    <tr *ngFor="let rme of rmce">
+                        <td><div class="alert alert-danger" role="alert">{{rme}}</div></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div *ngIf="genericErrors">
+            <div class="heading">
+                <button class="btn btn-danger" (click)="showEF()">Show Errors on BOM Creation</button>
+            </div>
+            <div class="scroll_table" *ngIf="sf">
+                <table>
+                    <tr *ngFor="let ge of genericErrors">
+                        <td><div class="alert alert-danger" role="alert">{{ge}}</div></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <button type="button" id="close" name="close" class="btn btn-primary mt-3" (click)="dload()">Download Errors as Excel</button>
+        <button type="button" id="close" name="close" class="btn btn-secondary mt-3" (click)="close()">Close</button>
+    </div>
+
+</div>

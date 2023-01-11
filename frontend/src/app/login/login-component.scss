@@ -1,0 +1,112 @@
+@import "../../assets/styles/global.scss";
+.login-container {
+    background-color: #18202A;
+    height: 100%;
+    width: 100%;
+    justify-content: flex-end;
+    overflow: hidden;
+    font-family: "Assistant", sans-serif;
+    .sidecover {
+        flex-shrink: 0;
+        height: 100%;
+        width: 100%;
+        background: url("/assets/images/bg/back.jpg") no-repeat;
+        background-size: cover;
+        overflow: scroll;
+    }
+    .login-card-holder {
+        margin: 24px 24px;
+        .error {
+            padding: 18px;
+            border-radius: 6px;
+            margin: 14px 0;
+            width: 460px;
+            &.unauthorized {
+                background: #dddada;
+            }
+            &.broken {
+                background: rgba(255, 0, 0, 0.7);
+                color: white;
+            }
+            h5 {
+                font-size: 18px;
+                font-weight: 600;
+                margin-bottom: 9px;
+                mat-icon {
+                    vertical-align: bottom;
+                }
+            }
+            p {
+                font-size: 15px;
+                strong {
+                    font-weight: 600;
+                }
+            }
+            a {
+                font-weight: 600;
+                text-decoration: underline!important;
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
+        .login-card {
+            padding: 0 24px;
+            width: 460px;
+            margin: 0 auto;
+            @media all and (max-width: $s) {
+                width: 80%;
+            }
+            .card-logo {
+                border-bottom: 1px solid #555555;
+                padding: 30px 0 15px;
+                text-align: center;
+                @media all and (max-width: $s) {
+                    padding: 20px 0 10px;
+                }
+                img {
+                    max-width: 150px;
+                }
+                h1 {
+                    color: #818286;
+                    padding: 15px 0;
+                    font-size: 24px;
+                    font-weight: 600;
+                }
+            }
+            form {
+                padding: 40px 0;
+                @media all and (max-width: $s) {
+                    padding: 30px 0;
+                }
+                mat-form-field {
+                    width: 100%;
+                }
+                button {
+                    width: 100%;
+                    margin-top: 15px;
+                    font-size: 16px;
+                    font-weight: 600;
+                    padding: 7px;
+                }
+            }
+            .card-footer {
+                padding: 25px 0;
+                border-top: 1px solid #555555;
+                font-size: 18px;
+                color: #838282;
+                text-align: center;
+            }
+            .login-text {
+                height: 40px;
+                color: aliceblue;
+                background-color: #18202A;
+                margin-top: 15px;
+                border: 1px solid #555555;
+                border-radius: 5px;
+                padding-left: 10px;
+                font-size: 16px;
+            }
+        }
+    }
+}

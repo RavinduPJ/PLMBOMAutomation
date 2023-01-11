@@ -1,0 +1,99 @@
+<div class="content-base">
+  <div class="card">
+    <div class="card-body">
+      <div class="row mb-2">
+        <div class="col-md-12">
+          <div class="row">
+            <form [formGroup]="cdt">
+              <input type="text" formControlName="cdt_ldc" id="cdt_ldc" name="cdt_ldc"
+                placeholder="Enter the Color Dying Technique string in Lab Dip Chart (e.x. SD)" class="form-control" />
+              <input type="text" formControlName="cdt_plm" id="cdt_plm" name="cdt_plm"
+                placeholder="Enter the Color Dying Technique string for PLM mapping (e.x. Single Dye)" class="form-control" />
+              <button type="submit" class="form-control btn btn-secondary" (click)="doSave()" [disabled]="roller">Save
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="roller"></span>
+              </button>
+            </form>
+            <div class="alert alert-danger text-center" role="alert" *ngIf="error">
+              {{error}}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-3">
+        <div class="col-md-12">
+          <div class="col-md-12 col-lg-12 mt-3">
+            <div class="card">
+              <div class="card-header">
+                Existing Color Dyeing Technique Mappings
+              </div>
+              <div class="card-body table-responsive text-nowrap  scroll-y scroll">
+                <table class="table table-striped table-sm">
+                  <thead>
+                    <tr align="center">
+                      <th>LDC String</th>
+                      <th>PLM String</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody align="center">
+                    <tr *ngFor="let cde of cdts" [class]="cde.state_cdt ? '' : 'table-secondary'" >
+                      <td #ldc  >
+                        {{cde.ldc_cdt}}
+                      </td>
+                      <td #plm>
+                        {{cde.plm_cdt}}
+                      </td>
+                      <td>
+                        <table>
+                          <tr>
+                            <td><button type="button" class="btn btn-sm btn-danger" [disabled]="!cde.state_cdt" (click)="del(cde.id)" matTooltip="Delete this mapping!">Delete</button></td>
+                            <td><button type="button" class="btn btn-sm btn-secondary"  (click)="tgl(cde.id, state)" [matTooltip]="cde.state_cdt ? 'Deactivate this mapping!' : 'Activate this mapping!'">
+                              
+                              <i [class]="cde.state_cdt ? 'fa-solid fa-toggle-on' : 'fa-solid fa-toggle-off'  " #state >
+
+                              </i></button></td>
+                            <td><button type="button" class="btn btn-sm btn-secondary" [disabled]="!cde.state_cdt"  (click)="edt(cde.id, ldc, plm)" matTooltip="Edit this mapping!">
+                              <i class="fa-solid fa-edit"></i>
+                            </button></td>
+                          </tr>
+                        </table>
+                        
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+    <!-- <div>
+        <div class="h2 text-center">Existing Color Dyeing Technique Mappings!</div>
+    </div> -->
+
+    <!-- <div>
+        <table class="table">
+            <tr>
+                <th>LDC String</th>
+                <th>PLM String</th>
+                <th></th>
+            </tr>
+            <tr *ngFor="let cde of cdts">
+                <td>
+                    {{cde.ldc_cdt}}
+                </td>
+                <td>
+                    {{cde.plm_cdt}}
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger" (click)="del(cde.id)">Delete!</button>
+                </td>
+            </tr>
+        </table>
+    </div> -->
+</div>

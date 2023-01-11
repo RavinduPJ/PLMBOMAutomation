@@ -1,0 +1,113 @@
+<div class="_layout layout-row">
+    <aside class="_navigation" [ngClass]="sideNavStatus ? 'opened' : ''">
+        <a class="_navLinkGroupHolder">
+            <div class="_navLinkGroup _brand layout-row">
+                <aside class="_iconBtn layout-row layout-align-center center">
+                    <a class="_nav-btn" (click)="toggleSideNav('toggle')" [ngClass]="sideNavStatus ? 'opened' : ''">
+                        <span></span>
+                    </a>
+                </aside>
+                <aside class="_link" *ngIf="sideNavStatus">
+                    <img alt="Brandix Logo" src="./assets/images/bdx-logo-140x50.png" />
+                </aside>
+            </div>
+        </a>
+        <a class="_navLinkGroupHolder ">
+            <div class="_navLinkGroup layout-row">
+                <div class="_user-info" style="color: #6b6b6b;">
+                    <span class="_user-pic text-center"><i class="far fa fa-user-circle fa-2x"></i></span>
+                    <span *ngIf="sideNavStatus">
+                        <span class="user-name text-center">
+                            <strong>{{currentUser}}</strong>
+                        </span>
+                        <span class="user-role text-center">{{userRole}}</span>
+                    </span>
+                </div>
+            </div>
+        </a>
+        <a routerLink="/tool/b" class="_navLinkGroupHolder" routerLinkActive="_activeNavLink"
+            [routerLinkActiveOptions]="{exact: true}">
+            <div class="_navLinkGroup layout-row">
+                <aside class="_iconBtn layout-row layout-align-center center" >
+
+                    <span class="boostrap-icons-outlined"><i class="fa fa-upload" aria-hidden="true" matTooltip="Upload Excel File"
+                        matTooltipPosition="right"></i></span>
+                </aside>
+                <aside class="_link" *ngIf="sideNavStatus">
+                    <a>Upload</a>
+                </aside>
+            </div>
+        </a>
+        <a routerLink="/history" class="_navLinkGroupHolder" routerLinkActive="_activeNavLink"
+            [routerLinkActiveOptions]="{exact: false}">
+            <div class="_navLinkGroup layout-row">
+                <aside class="_iconBtn layout-row layout-align-center center" matTooltip="Upload History"
+                    matTooltipPosition="right">
+                    <!--<span class="material-icons-outlined">schedule</span>-->
+                    <span class="boostrap-icons-outlined"><i class="fa fa-history" aria-hidden="true"></i></span>
+                </aside>
+                <aside class="_link" *ngIf="sideNavStatus">
+                    <a>Show Upload History</a>
+                </aside>
+            </div>
+        </a>
+        <a routerLink="/sysconf/usm" *ngIf="getType() == 1" class="_navLinkGroupHolder" routerLinkActive="_activeNavLink"
+            [routerLinkActiveOptions]="{exact: false}">
+           
+            <div class="_navLinkGroup layout-row">
+                <aside class="_iconBtn layout-row layout-align-center center" matTooltip="System Configuration"
+                    matTooltipPosition="right">
+                    <!--<span class="material-icons-outlined">schedule</span>-->
+                    <span class="boostrap-icons-outlined"><i class="fa fa-wrench" aria-hidden="true"></i></span>
+                </aside>
+                <aside class="_link" *ngIf="sideNavStatus">
+                    <a>System Configuration</a>
+                </aside>
+            </div>
+        </a>
+        <a routerLink="/sysconf/cdt" *ngIf="getType() == 2" class="_navLinkGroupHolder" routerLinkActive="_activeNavLink"
+        [routerLinkActiveOptions]="{exact: false}">
+       
+        <div class="_navLinkGroup layout-row">
+            <aside class="_iconBtn layout-row layout-align-center center" matTooltip="System Configuration"
+                matTooltipPosition="right">
+                <!--<span class="material-icons-outlined">schedule</span>-->
+                <span class="boostrap-icons-outlined"><i class="fa fa-wrench" aria-hidden="true"></i></span>
+            </aside>
+            <aside class="_link" *ngIf="sideNavStatus">
+                <a>System Configuration</a>
+            </aside>
+        </div>
+    </a>
+        
+        <a [routerLink]="" (click)="logout()" class="_navLinkGroupHolder">
+            <div class="_navLinkGroup layout-row">
+                <aside class="_iconBtn layout-row layout-align-center center" matTooltip="Logout"
+                matTooltipPosition="right">
+                <span class="boostrap-icons-outlined"><i class="fa fa-sign-out" aria-hidden="true"></i></span>
+                </aside>
+                <aside class="_link" *ngIf="sideNavStatus">
+                    <a>Logout</a>
+                </aside>
+            </div>
+        </a>
+    </aside>
+    <aside class="_template-content">
+        <div class="_page-header layout-row">
+            <aside class="flex-66 layout-m-flex-75 _title layout-row layout-align-start center">
+
+                <div style="width: 100%;">
+                    <h2 style="float: left;">PLM BOM Automation <br> <span>({{userRole}})</span></h2>
+                </div>
+            </aside>
+
+        </div>
+        <div class="_page-content">
+            <router-outlet></router-outlet>
+        </div>
+        <div class="_copyright">
+            <p>© Copyright {{ copyrightYear | date: 'yyyy' }} | All rights reserved | PG </p>
+        </div>
+    </aside>
+
+</div>

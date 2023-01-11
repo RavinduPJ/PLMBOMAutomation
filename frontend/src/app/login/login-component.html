@@ -1,0 +1,52 @@
+<section class="login-container layout-row layout-align-center center">
+    <aside class="sidecover">
+
+    </aside>
+    <div class="login-card-holder">
+        <!--Unauthorized message container-->
+
+        <!------------------------------------>
+        <!--Login Broken message container-->
+
+        <!------------------------------------>
+        <div class="login-card">
+            <div class="card-logo">
+                <img alt="Brandix logo" src="./assets/images/bdx-logo-200x70.png" />
+                <h1>PLM BOM Automation</h1>
+            </div>
+            <form id="_login" [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
+                <div>
+                    <input formControlName="userName" class="login-text" type="text" matInput placeholder="Username" style="width: 100%; " />
+                </div>
+                <div>
+                    <input formControlName="password" class="login-text" type="password" matInput placeholder="Password" style="width: 100%;" />
+                </div>
+
+                <button mat-raised-button class="_primaryBtn" type="submit" >
+                    <!--(click)="login()"-->
+
+                    <!-- {{statusMessage}} -->
+                    Login
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="loginProgress"></span>
+                </button>
+            </form>
+            <div *ngIf="!loginSuccess" style="color: #fff!important;
+                background-color: #f44336!important;
+                padding: 0.01em 16px;
+                margin-bottom: 16px!important;
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                font-size: 15px;
+                line-height: 50px;
+                border-radius: 2px;
+                height: 50px;
+                text-align: center;
+                ">
+                {{errString}}
+            </div>
+            <div class="card-footer">
+
+            </div>
+        </div>
+    </div>
+
+</section>

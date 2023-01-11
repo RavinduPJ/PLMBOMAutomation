@@ -1,0 +1,44 @@
+{
+  "name": "node-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "bin": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js"
+  },
+  "pkg": {
+    "scripts": "app.js",
+    "targets": [
+      "node16-linux-x64"
+    ],
+    "outputPath": "dist"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "esbuild": "^0.14.49",
+    "express": "^4.17.3",
+    "got": "^12.0.3",
+    "node-minify": "^3.6.0",
+    "nodemon": "^2.0.15",
+    "pg": "^8.7.3"
+  },
+  "devDependencies": {
+    "eslint": "^8.12.0"
+  },
+  "nodemonConfig": {
+    "restartable": "rs",
+    "ignore": [
+      "node_modules/**/node_modules"
+    ],
+    "env": {
+      "bomtool_db_user_name": "shadow",
+      "bomtool_db_user_password": "aa",
+      "bomtool_db_host": "5.23.13.251",
+      "bomtool_db_catalog": "bom_catalog"
+    }
+  }
+}

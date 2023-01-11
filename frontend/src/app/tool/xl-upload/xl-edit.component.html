@@ -1,0 +1,43 @@
+<div class="modal">
+    <div class="modal-content">
+        <form [formGroup]="editForm">
+            <div class="col-12">
+                <div class="row gy-3">
+                    <div class="col-12">
+                        <span class="q form-label">GMT Color</span>
+                        <span><input type='text' class="form-control mt-2" formControlName='gmtColor' /></span>
+                    </div>
+                    <div class="col-12">
+                        <span class="q form-label">GMT Color Code</span>
+                        <span><input type='text' class="form-control mt-2" formControlName='gmtColorCode' /></span>
+                    </div>
+                    <div class="col-12">
+                        <span class="q form-label">RM Color</span>
+                        <span><input type='text' class="form-control mt-2" formControlName='rmColor' /></span>
+                    </div>
+                    <div class="col-12">
+                        <span class="q form-label">RM Color Code</span>
+                        <span><input type='text' class="form-control mt-2" formControlName='rmColorCode' /></span>
+                    </div>
+                    <div class="col-12">
+                        <span class="q form-label">Placement Name</span>
+                        <span><input type='text' class="form-control mt-2" formControlName='placementName' /></span>
+                    </div>
+                    <div class="col-12">
+                        <span class="q form-label">Supplier Name</span>
+                        <span><input type='text' class="form-control mt-2" formControlName='supplierName' /></span>
+                    </div>
+
+                    <div class="col-12">
+                        <span class="q form-label">Color Dying Technique</span>
+                        <span><input type='text' class="form-control mt-2" formControlName='colorDyingTechnique' /></span>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <button type="button" class="btn btn-secondary model-btn" (click)="save(editForm.value)">Save</button>
+                        <button type="button" class="btn btn-danger model-btn" (click)="cancel()">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

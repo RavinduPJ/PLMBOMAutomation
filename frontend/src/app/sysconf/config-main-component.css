@@ -1,0 +1,19 @@
+.nav-pills .nav-link.active {
+    /* background-color: rgb(186, 4, 4); */
+    background-color: gray;
+    color:white
+}
+
+.nav-pills .nav-item {
+  background-color: white;
+}
+
+.nav-link {
+    color:black
+}
+
+.layout{
+    /* background-color: rgb(24, 32, 42); */
+    overflow: hidden;
+    display: block;
+}

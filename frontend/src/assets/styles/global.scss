@@ -1,0 +1,355 @@
+@import "./shared";
+
+.f-12{font-size: 12px}
+.f-13{font-size: 13px}
+.f-14{font-size: 14px}
+.f-15{font-size: 15px}
+
+.f-w-200{font-weight: 200;}
+.f-w-600{font-weight: 600;}
+.f-w-700{font-weight: 700;}
+
+.txt-black{color: $black}
+.txt-red{color: $red}
+.txt-green{color: $green}
+
+.isHidden{display: none!important;}
+.uppercase{text-transform: uppercase}
+.pt-0{padding-top: 0!important;}
+._cursorPointer{ cursor: pointer!important;}
+.chartLoadingBg{
+  background: url("../images/icons/chart-loader-an.gif") no-repeat center;
+  background-size: inherit;
+  &.stopMotion{
+    background: url("../images/icons/chart-loader-freez.png")no-repeat center;
+  }
+}
+
+.flip{
+  transform: scaleX(-1) !important;
+  -webkit-transform: scaleX(-1) !important;
+  -ms-transform: scaleX(-1) !important;
+  -o-transform: scaleX(-1) !important;
+  -moz-transform: scaleX(-1) !important;
+}
+
+.cardRowPadding{
+  padding: 16px 8px;
+  @media all and(max-width: $m) {
+    padding: 8px 4px;
+  }
+}
+.cardCellPadding{
+  padding: 0 8px;
+  @media all and(max-width: $l) {
+    padding: 8px;
+  }
+  @media all and(max-width: $m) {
+    padding: 4px;
+  }
+}
+
+.cardColPadding{
+  padding: 8px;
+  @media all and(max-width: $m) {
+    padding: 4px;
+  }
+}
+
+.fixCellCardHeight{height: 100%}
+
+.primaryFont{
+  font-family: $primaryFont;
+}
+.responsiveTable{
+  min-width: 450px;
+}
+._primaryBtn{
+  background: $red;
+  color: white;
+  margin-bottom: 0.4em!important;
+  mat-spinner{
+    display: inline-block;
+    vertical-align: text-bottom!important;
+    margin-right: 7px;
+    .mat-progress-spinner circle, .mat-spinner circle{
+      stroke: white!important;
+    }
+  }
+}
+._downloadBtn{
+  @include transition(ease all 0.4s);
+  border-radius: 4px;
+  color: $cyan;
+  border: 1px solid $cyan!important;
+  background: white;
+  outline: none!important;
+  padding: 5px;
+  mat-icon{
+    @include transition(ease all 0.4s);
+    font-size: 16px;
+    height: auto;
+    vertical-align: middle;
+  }
+  &:hover{
+    @include transition(ease all 0.4s);
+    cursor: pointer!important;
+    color: $cyanHover;
+    border-color: $cyanHover!important;
+    mat-icon{
+      color: $cyanHover!important;
+    }
+  }
+}
+._breadcrumb{
+  font-size: 15px;
+  padding: 12px 16px;
+  background: white;
+  color: $cyan;
+  a{
+    color: $cyan;
+    &:hover{
+      color: $cyanHover;
+    }
+  }
+}
+._cardShadow{
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+._cardHeader{
+  font-weight: 600;
+  padding: 9px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  margin-bottom: 12px;
+  position: relative;
+  ._actionMenu{
+    position: absolute;
+    display: inline-block;
+    top: 0;
+    right: 0;
+  }
+}
+._cardFilters{
+  mat-form-field{
+    min-width: 380px;
+    margin-bottom:14px ;
+    .mat-form-field-wrapper{
+      padding-bottom: 0;
+    }
+  }
+}
+._dialogHeader{
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  margin-bottom: 12px;
+  padding: 7px 0;
+  .dTitle{
+    .main{
+      font-size: 16px;
+      font-weight: 600;
+    }
+    .sub{
+      font-size: 14px;
+    }
+  }
+  .dClose{
+    text-align: right;
+    mat-icon{
+      font-size: 20px;
+      @include transition(ease all 0.4s);
+      &:hover{
+        @include transition(ease all 0.4s);
+        cursor: pointer!important;
+        color: $red;
+      }
+    }
+  }
+}
+
+.tableRowProcessing{
+  vertical-align: middle!important;
+}
+
+.rpLinkCard{
+  display: flex!important;
+  height: 100%;
+  h6{
+    span{
+      display: block;
+      font-size: 20px;
+    }
+  }
+  .imgBox{
+    background: no-repeat right;
+    background-size: contain;
+  }
+}
+
+.selectedPlantsDisplayContainer{
+  margin: 12px 0;
+  //background: #fff8cb;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 3px;
+  p{
+    padding: 7px;
+    font-size: 14px;
+    color: red;
+  }
+  .data{
+    padding: 4px;
+    aside{
+      padding: 4px;;
+      span{
+        background: #ffeca7;
+        border: 1px solid rgba(0,0,0,0.1);
+        padding: 3px;
+        font-size: 14px;
+        border-radius: 3px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+      }
+    }
+  }
+}
+._tableLegend{
+  div{
+    font-size: 14px;
+    margin-right: 18px;
+    span{
+      vertical-align: middle;
+    }
+  }
+}
+._loader{
+  padding: 4px 8px;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 7px;
+  background: lemonchiffon;
+  margin: 6px 0;
+  mat-spinner{
+    vertical-align: middle!important;
+    display: inline-block;
+    margin-right: 8px;
+  }
+}
+
+.processSummary{
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  h6{
+    padding-bottom: 4px;
+    font-weight: 600;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+  aside{
+    padding: 12px 0 0;
+    table{
+      min-width: 100%!important;
+      tr{
+        td,th{
+          border: 1px solid rgba(0,0,0,0.1);
+          text-align: center;
+          padding: 7px;
+          color: black!important;
+          &.success{
+            color: #00b108!important;
+          }
+          &.fail{
+            color: #ff0000!important;
+          }
+        }
+        td{
+          background: #e5edff;
+        }
+        th{
+          text-align: left!important;
+          background: #c9d6f5;
+        }
+      }
+    }
+    button{
+      margin-right: 6px;
+    }
+    &.action{
+      padding-left: 18px;
+      @media all and (max-width: $l) {
+        padding-left: 0;
+      }
+      mat-radio-group{
+        display: flex;
+        flex-direction: column;
+        mat-radio-button{
+          margin-bottom: 7px;
+        }
+      }
+    }
+  }
+}
+
+._reportRefreshing{
+  display: inline-block;
+  font-weight: 600;
+  font-size: 13px;
+  background:#e5edff;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 4px;
+  padding: 4px 6px;
+  color: $red;
+  mat-spinner{
+    vertical-align: sub;
+    display: inline-block;
+    margin-right: 3px;
+  }
+}
+
+._statusIcon{
+  mat-icon{
+    vertical-align: middle;
+    margin-right: 3px;
+    &.rotate{
+      animation: spin 3s linear infinite;
+      -webkit-animation: spin 3s linear infinite;
+      -moz-animation: spin 3s linear infinite;
+      -o-animation: spin 3s linear infinite;
+    }
+  }
+}
+._configInfoMessage{
+  font-weight: 600;
+  margin: 14px 0 7px 0;
+  padding: 4px 7px;
+  border-radius: 4px;
+  color: black;
+  background: #ffe4c4;
+  border: 1px solid rgb(253, 209, 164);
+  span{
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+}
+
+.rotate{
+  animation: spin 3s linear infinite;
+  -webkit-animation: spin 3s linear infinite;
+  -moz-animation: spin 3s linear infinite;
+  -o-animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(0);
+    -moz-transform: rotate(0);
+    -o-transform: rotate(0);
+    -ms-transform: rotate(0);
+    -webkit-transform: rotate(0);
+  }
+  from {
+    transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+  }
+
+}

@@ -1,0 +1,140 @@
+.content-base {
+    // background-color: #18202A;
+    // overflow: hidden;
+    // height: 100vh;
+    // display: block;
+    // .container {
+    //     margin-top: 2%;
+    //     margin-left: 4%;
+    //     // width: 100%;
+    //     overflow: auto;
+    //     display: flex;
+    // }
+    .box {
+        border: 1px solid rgb(107, 107, 107);
+        padding-bottom: 30px;
+        border-radius: 10px;
+    }
+    .text {
+        color: #6b6b6b;
+        width: 10%;
+        display: block;
+        margin-left: 2%;
+        margin-bottom: 10px;
+    }
+    // select {
+    //     width: 10%;
+    //     margin-left: 5px;
+    // }
+    // .box {
+    //     display: block;
+    //     padding-bottom: 2%;
+    //     margin-right: auto;
+    //     margin-top: 10px;
+    // }
+    // button {
+    //     padding: 10px 20px;
+    //     // background-color: red;
+    //     // color: aliceblue;
+    //     border: none;
+    //     border-radius: 5px;
+    // }
+    .edit-btn {
+        background-color: rgb(221, 33, 38);
+        height: 30px;
+    }
+    .process {
+        float: right;
+        border-radius: 5px;
+    }
+    .file {
+        color: #6b6b6b;
+        display: none;
+    }
+    .file-btn {
+        background-color: green;
+        color: aliceblue;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease-in;
+    }
+    table {
+        // width: 100%;
+        // color: #6b6b6b;
+        margin-bottom: 1%;
+        thead {
+          tr {
+              font-weight: bold;
+            }
+        }
+        th {
+            height: 5vh;
+        }
+        td {
+            width: 2%;
+            // button {
+            //     // width: 60%;
+            //     height: ;
+            // }
+            text-align: center;
+        }
+    }
+    .page-process {
+        width: 40%;
+        height: 80%;
+    }
+    // .info {
+    //     text-align: center;
+    //     color: #6b6b6b;
+    //     width: 100%;
+    //     span {
+    //         margin-top: 1%;
+    //         display: inline-block;
+    //     }
+    //     span.q {
+    //         width: 20%;
+    //     }
+    // }
+    select {
+        // width: 250px;
+        // height: 40px;
+        color: #6b6b6b;
+        // background-color: #18202A;
+        border-radius: 5px;
+    }
+
+    // #edit {
+    //   width: auto;
+    //   height: 30px;
+    //   border-radius: 5px;
+    //   cursor: pointer;
+    // }
+
+    .card-header {
+      font-weight: bold;
+    }
+
+    .card .card-body .table-bordered>thead>tr>th:last-child {
+      position: sticky;
+      right: 0px;
+      background-color: white;
+    }
+
+    .card .card-body .table-bordered>tbody>tr>td:last-child {
+      position: sticky;
+      right: 0px;
+      background-color: white;
+    }
+
+    #edit_col {
+      position: sticky;
+      right: 0px;
+      background-color: white;
+    }
+}
+
+::ng-deep .toast-container {
+  font-family: "Assistant", sans-serif;
+}

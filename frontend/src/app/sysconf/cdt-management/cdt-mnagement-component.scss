@@ -1,0 +1,39 @@
+.content-base {
+    // background-color: #18202A;
+    overflow: hidden;
+    height: 100vh;
+    display: block;
+
+
+    .form-control {
+        margin-top: 1%;
+    }
+
+    .btn-primary {
+        background-color: rgb(186, 4, 4)
+    }
+
+    .h2{
+        color: gray;
+        margin-top: 2%;
+    }
+
+    .table {
+        margin-top: 2%;
+
+
+    }
+    .alert {
+        margin-top: 1%;
+    }
+
+    .scroll-y {
+        display: block;
+    }
+
+    .scroll {
+        position: relative;
+        height: 300px;
+        overflow: auto;
+    }
+}

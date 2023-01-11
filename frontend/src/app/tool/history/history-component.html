@@ -1,0 +1,263 @@
+<div class="content-base">
+
+
+    <div class="container mt-3">
+      <div class="card">
+        <div class="card-body">
+          <div class="row mb-2">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header">
+                  <strong>History</strong>
+                </div>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-12">
+
+                      <div class="row mt-3">
+                        <div class="col-md-6 col-lg-6">
+                          <div class="form-group">
+                            <!-- <span class="text">Customer</span> -->
+                            <label class="control-label">Customer</label>
+                            <select class="form-control" name="customer" id="customer" #customerX (change)="customerSelected(customerX.value)">
+                              <option *ngFor="let c of customers" value="{{c.customer_id_plm}}">
+                                {{c.customer_name}}
+                              </option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-md-6 col-lg-6">
+                          <div class="form-group">
+                            <!-- <span class="text">Season</span> -->
+                            <label class="control-label">Season</label>
+                            <select class="form-control" name="season" id="season" #season (change)="seasonSelected(season.value)">
+                              <option *ngFor="let s of seasons" value="{{s.season_id_plm}}">
+                                {{s.season_name}}
+                              </option>
+                            </select>
+                          </div>
+
+                        </div>
+                      </div>
+                      <div class="row mt-3">
+                        <div class="col-md-6 col-lg-6">
+                          <div class="form-group">
+                            <!-- <span class="text">Style</span> -->
+                            <label class="control-label">Style</label>
+                            <select class="form-control" name="style" #style (change)="styleSelected(style.value)" id="style">
+                              <option *ngFor="let s of styles" value="{{s.style_id_plm}}">
+                                {{s.style_name}}
+                              </option>
+                            </select>
+                          </div>
+
+                        </div>
+                        <div class="col-md-6 col-lg-6">
+                          <div class="form-group">
+                            <!-- <span class="text">Version</span> -->
+                            <label class="control-label">Version</label>
+                            <select class="form-control" name="ver" #bom id="ver" (change)="bomSelected(bom.value)">
+                              <option *ngFor="let v of versions" value="{{v.bom_version_id_plm}}">
+                                {{v.bom_version_name}}
+                              </option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row mt-3">
+                        <div class="col-md-6 col-lg-6">
+                          <div class="form-group">
+                            <!-- <span class="text">Upload Slot</span> -->
+                            <label class="control-label">Upload Slot</label>
+                            <select class="form-control" name="us" #us id="us" (change)="slotSelected(us.value)">
+                              <option *ngFor="let u of uploadSlots" value="{{u.id}}">
+                                {{u.uploaded_date | histDate}}
+                              </option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+
+
+
+
+
+                    </div>
+                  </div>
+
+                  <div class="row mt-3 mb-2">
+                    <div class="col-md-12">
+                      <div class="row mt-3">
+                        <div class="col-12">
+                          <div class="row mt-3">
+                            <div class="row mt-3" *ngIf="showLoader">
+                              <div class="text-center">
+                                <div class="text-light">
+                                  Please Wait...
+                                  <span class="spinner-border spinner-border-sm  text-light" role="status" aria-hidden="true"></span>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row mt-3" *ngIf="resultsError">
+                              <div class="text-center">
+                                <div class="alert alert-danger" role="alert">
+                                  {{resultsError}}
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row col-md-12 mt-3" *ngIf="showResults">
+                              <div class="col-10 offset-1">
+                                <div class="alert alert-success fw-bold">
+                                  <div class="d-flex justify-content-between">
+                                    <div>
+                                      <i class="bi bi-check-circle-fill"></i>
+                                      <span class="q ms-3">Colorways Extracted </span>
+                                    </div>
+                                    <div>
+                                      <span class="a">{{details.summary.colorways_extracted}}</span>
+                                    </div>
+                                  </div>
+                                  <div class="d-flex justify-content-between mt-3">
+                                    <div>
+                                      <i class="bi bi-check-circle-fill"></i>
+                                      <span class="q ms-3">Raw Material Color Extracted </span>
+                                    </div>
+                                    <div>
+                                      <span class="a">{{details.summary.raw_material_extracted}}</span>
+                                    </div>
+
+                                  </div>
+                                  <div class="d-flex justify-content-between mt-3">
+                                    <div>
+                                      <i class="bi bi-check-circle-fill"></i>
+                                      <span class="q ms-3">Colorways Added To The Library </span>
+                                    </div>
+                                    <div>
+                                      <span class="a">{{details.summary.colorways_added_to_the_library}}</span>
+                                    </div>
+
+                                  </div>
+                                  <div class="d-flex justify-content-between mt-3">
+                                    <div>
+                                      <i class="bi bi-check-circle-fill"></i>
+                                      <span class="q ms-3">Raw Material Colors Added To The Library </span>
+                                    </div>
+                                    <div>
+                                      <span class="a">{{details.summary.raw_material_colors_added_to_the_library}}</span>
+                                    </div>
+
+                                  </div>
+                                  <div class="d-flex justify-content-between mt-3">
+                                    <div>
+                                      <i class="bi bi-check-circle-fill"></i>
+                                      <span class="q ms-3">Colorways Added To PLM BOM </span>
+                                    </div>
+                                    <div>
+                                      <span class="a">{{details.summary.colorways_added_to_plm_bom}}</span>
+                                    </div>
+
+                                  </div>
+                                  <div class="d-flex justify-content-between mt-3">
+                                    <div>
+                                      <i class="bi bi-check-circle-fill"></i>
+                                      <span class="q ms-3">Raw Material Colors Added To PLM BOM </span>
+                                    </div>
+                                    <div>
+                                      <span class="a">{{details.summary.raw_material_colors_added_to_plm_bom}}</span>
+                                    </div>
+
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row mt-3" *ngIf="showResults">
+                              <div class="btn-group" role="group" aria-label="Basic example">
+                                <button type="button" class="btn btn-secondary" (click)="showExcel()">View Uploaded
+                                  Excel</button>
+                                <button type="button" class="btn btn-danger" (click)="showErrors()">View Errors</button>
+
+                              </div>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+</div>
+<div id="myModal" class="modal" *ngIf="dispExcel">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="card">
+          <div class="card-header">
+            <span class="close" (click)="closeExcel()">&times;</span>
+          </div>
+          <div class="card-body table-responsive text-nowrap">
+            <table class="table table-striped table-sm">
+              <thead>
+                <tr align="center">
+                  <td>Garment Colour</td>
+                  <td>Garment Color Code</td>
+                  <td>RM Color</td>
+                  <td>RM Color Code</td>
+                  <td>Placement Name</td>
+                  <td>Supplier Name</td>
+                  <td>Colour Dying Technique</td>
+                </tr>
+              </thead>
+              <tbody align="center">
+                <tr *ngFor="let row of vwTable; let indx = index">
+                  <td>{{row.gmt_color}}</td>
+                  <td>{{row.gmt_color_code}}</td>
+                  <td>{{row.rm_color}}</td>
+                  <td>{{row.rm_color_code}}</td>
+                  <td>{{row.rm_color_placement}}</td>
+                  <td>{{row.rm_color_supplier}}</td>
+                  <td>{{row.rm_color_cdt}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="btn-group" role="group" aria-label="Page">
+            <button type="button" class="btn btn-danger" (click)="tablePageBack()"
+                [disabled]="backButtonDisabled">&lt;</button>
+            <button type="button" class="btn btn-danger" (click)="tablePageForward()"
+                [disabled]="forwardButtonDisabled">&gt;</button>
+        </div>
+    </div>
+
+</div>
+<div id="myModal" class="modal" *ngIf="dispErrors">
+    <div class="modal-content">
+        <span class="close" (click)="closeErrors()">&times;</span>
+        <div style="font-weight:bolder;">
+            GMT
+        </div>
+        <div style="height: 150px; overflow: auto;">
+            <ul class="list-group" *ngFor="let e of details.errors">
+                <li class="list-group-item list-group-item-danger" *ngIf="e.error_type==='GMT'">{{e.error_description}}</li>
+            </ul>
+        </div>
+        <div style="font-weight:bolder;">
+            RM
+        </div>
+        <div style="height: 150px; overflow: auto;">
+            <ul class="list-group" *ngFor="let e of details.errors">
+                <li class="list-group-item list-group-item-danger" *ngIf="e.error_type==='RM'">{{e.error_description}}</li>
+            </ul>
+        </div>
+    </div>
+</div>

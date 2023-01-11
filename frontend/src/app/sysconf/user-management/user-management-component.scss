@@ -1,0 +1,132 @@
+// .btn-primary {
+//     background-color: rgb(186, 4, 4);
+// }
+
+.ulist {
+    width: 10%;
+    display: block;
+    margin-top: 2%;
+    // div{
+    //     color: gray;
+    // }
+}
+
+.utype {
+    margin-top: 2%;
+
+
+}
+
+
+.utype div {
+    display: block;
+    margin-top: 1%;
+    // color: gray;
+}
+
+
+
+
+
+// .mat-list-item {
+//     color: gray;
+// }
+
+
+.mat-list-single-selected-option {
+    // background: red;
+    background: green;
+    // color: white;
+    // border-radius: 5%;
+    height: 10px;
+}
+
+
+.mat-list-item:hover {
+
+    // background: rgb(255, 168, 168);
+    background: gray;
+}
+
+.customer_sec {
+    margin-top: 2%;
+
+    .tableDiv {
+        margin-top: 2%;
+        color: gray;
+    }
+
+
+    span{
+        color:gray
+    }
+
+
+    td {
+        height: 40px;
+        width: 120px;
+    }
+
+    .add_button {
+        margin-left: 2%;
+    }
+
+    .status {
+        margin-left: 2%;
+    }
+
+}
+
+.useraddsec {
+    .form-control{
+        margin-bottom: 1%;
+    }
+
+    .modal {
+        display: block;
+
+
+
+    }
+
+    .modal-header {
+        // background-color: rgb(67, 90, 118);
+        // color: white;
+        font-weight: bold;
+    }
+
+    .modal-body {
+        // background-color: rgb(24, 32, 42)
+    }
+
+}
+
+.content-base {
+    // background-color: #18202A;
+    overflow: hidden;
+    // height: 100vh;
+    display: block;
+}
+
+.card-header {
+  font-weight: bold;
+}
+
+.mat-list-base .mat-list-item,
+.mat-list-base .mat-list-option {
+  display: block;
+  height: 28px;
+  -webkit-tap-highlight-color: transparent;
+  width: 100%;
+  padding: 0;
+}
+
+.my-custom-scrollbar {
+  position: relative;
+  height: 150px;
+  overflow: auto;
+}
+
+.table-wrapper-scroll-y {
+  display: block;
+}
